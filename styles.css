@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+#app {
+    display: "none";    
+}
+
 :root {
     --color-border: #dbdbdb;
 }
@@ -300,9 +304,9 @@ main {
 }
 .title {
     font-size: 14px;
-    fontweight: 600;
+    font-weight: 600;
     color: #8e8e8e;
-}
+} 
 .see-all-btn {
     color: #262626;
     text-decoration: none;
