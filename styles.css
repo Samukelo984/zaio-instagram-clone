@@ -96,6 +96,43 @@
     margin-left: 14px;
 }
 
+.create-post {
+    width: 100%;
+    height: 100%;  
+    top: 0;
+    left: 0; 
+    position: fixed;
+    z-index: 1111; 
+    background: rgba(0, 0, 0, 0.8); 
+}
+
+.post-content {
+    width: 688px;
+    height: 313px;
+    position: relative;
+    top: 20%;
+    left: 25%; 
+    border-radius: 15px;
+    background-color: white; 
+}
+
+.create-new-post {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-item {
+    width: 348px;
+    height: 280px;  
+    display: flex; 
+    flex-direction: row;  
+} 
+
+
+
+
+
 main {
     height: calc(100vh - 54px);
     background-color: #fafafa;
