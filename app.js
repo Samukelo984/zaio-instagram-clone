@@ -1,13 +1,66 @@
 
 class App {
     constructor() {
+        this.$app = document.querySelector("#app"); 
+        this.$firebaseAuthContainer = document.querySelector("#firebaseui-auth-container"); 
         this.$upload = document.querySelector(".upload"); 
         this.$createPost = document.querySelector(".create-post"); 
         this.$backArrow = document.querySelector("#back-arrow"); 
         
+        this.$app.style.display="none";  
+        this.ui = new firebaseui.auth.AuthUI(auth); 
+          
+
+         this.addEventListeners(); 
+         this.handleAuth(); 
+
+         
+    };  
+
+
+    // FUNCTION TO HANDLE THE AUTHENTICATION OF A USER
+     handleAuth() {
+   firebase.auth().onAuthStateChanged((user) => {
+         if (user) {
+            this.redirectToApp();
+          } else {
+        this.redirectToAuth();
+          }
+        });
+       } 
+   
+       redirectToApp() {
+         this.$firebaseAuthContainer.style.display = "none";
+         this.$app.style.display = "block";
+       }
+    
+      redirectToAuth() {
+        this.$firebaseAuthContainer.style.display = "block";
+        this.$app.style.display = "none";
+
+        this.ui.start("#firebaseui-auth-container", {
+            signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID
+            ]
+           }); 
+      }    
+
+
+  
+
  
-        this.addEventListeners(); 
-    }; 
+
+
+
+
+
+
+
+
+
+
+
+
 
     // EVENT LISTENERS FOR ENTIRE BODY 
     addEventListeners() {
@@ -32,7 +85,7 @@ class App {
 
         if(isBackArrowClickedOn) {
             this.$createPost.style.display = "none"; 
-        };
+        };  
     }; 
 };  
 
