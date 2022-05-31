@@ -1,61 +1,29 @@
- 
+
 class App {
     constructor() {
-this.$app = document.querySelector("#app");
-this.$firebaseAuthContainer = document.querySelector("#firebaseui-auth-container"); 
-this.$logoutButton = document.querySelector(".logout");  
-this.ui = new firebaseui.auth.AuthUI(auth); 
-
-this.$app.style.display = "none";  
-
-this.handleAuth();    
-this.$logoutButton.addEventListener("click", (event) =>{
-    this.handleLogOut(); 
-});
-
-} 
-
-handleAuth() {
-    firebase.auth().onAuthStateChanged((user) => {
-        if(user) {
-            console.log(user) 
-            this.redirectToApp(); 
-        } else {
-            this.redirectToAuth(); 
-        };
-    }); 
-     
-};
-
-handleLogOut() {
-    firebase.auth().signOut().then(() => {
-        this.redirectToAuth();
-    }).catch((error) => {
-        console.log("Error Occured");
-    }); 
-};
+        this.$upload = document.querySelector(".upload"); 
+        this.$createPost = document.querySelector(".create-post");
+        
  
-redirectToApp() {
-    this.$firebaseAuthContainer.style.display = "none"; 
-    this.$app.style.display="block"; 
-};
-redirectToAuth() {
-    this.$firebaseAuthContainer.style.display = "block"; 
-    this.$app.style.display="none"; 
+        this.addEventListeners(); 
+    }; 
 
-    this.ui.start('#firebaseui-auth-container', {
-        signInOptions: [
-          firebase.auth.EmailAuthProvider.PROVIDER_ID,
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID
-        ],
-        // Other config options...
-      }); 
-};
+    // EVENT LISTENERS FOR ENTIRE BODY 
+    addEventListeners() {
+        document.body.addEventListener("click",(event) => {
+            this.handleUploadClick(event); 
+        });
+    };
 
+    // FUNCTION TO HANDLE CREATE-POST DIV
+    handleUploadClick(event) {
+        const isUploadClickedOn = this.$upload.contains(event.target);
+        const isCreatePostClickedOn = this.$createPost.contains(event.target);
 
+        if(isUploadClickedOn) {
+            this.$createPost.style.display = "block"; 
+        }; 
+    }; 
+};  
 
-}; 
- 
-
-
-const app = new App();   
+const app = new App (); 
