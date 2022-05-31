@@ -123,6 +123,10 @@
     align-items: center;
 }
 
+#back-arrow {
+    cursor: pointer; 
+}  
+
 .upload-item {
     width: 348px;
     height: 280px;  
