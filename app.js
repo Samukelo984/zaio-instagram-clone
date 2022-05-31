@@ -3,20 +3,21 @@ class App {
     constructor() {
         this.$app = document.querySelector("#app"); 
         this.$firebaseAuthContainer = document.querySelector("#firebaseui-auth-container"); 
+        this.$logoutButton = document.querySelector(".logout")
         this.$upload = document.querySelector(".upload"); 
         this.$createPost = document.querySelector(".create-post"); 
         this.$backArrow = document.querySelector("#back-arrow"); 
-        
-        this.$app.style.display="none";  
+          
         this.ui = new firebaseui.auth.AuthUI(auth); 
           
-
+ 
          this.addEventListeners(); 
          this.handleAuth(); 
 
-         
+         this.$logoutButton.addEventListener("click", (event) => {
+             this.handleLogout(); 
+         }); 
     };  
-
 
     // FUNCTION TO HANDLE THE AUTHENTICATION OF A USER
      handleAuth() {
@@ -27,7 +28,15 @@ class App {
         this.redirectToAuth();
           }
         });
-       } 
+       };
+
+       handleLogout() {
+           firebase.auth().signOut().then(() => {
+               this.redirectToAuth(); 
+           }).catch((error) => {
+               console.log("error"); 
+           });
+       };
    
        redirectToApp() {
          this.$firebaseAuthContainer.style.display = "none";
@@ -43,26 +52,9 @@ class App {
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID
             ]
            }); 
-      }    
+      }; 
 
-
-  
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // EVENT LISTENERS FOR ENTIRE BODY 
+    // EVENT LISTENERS  
     addEventListeners() {
         document.body.addEventListener("click",(event) => {
             this.handleUploadClick(event); 
