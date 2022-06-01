@@ -1,4 +1,3 @@
-
 class App {
     constructor() {
         this.$app = document.querySelector("#app"); 
@@ -82,3 +81,5 @@ class App {
 };  
 
 const app = new App (); 
+
+ 
