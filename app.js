@@ -6,6 +6,9 @@ class App {
         this.$upload = document.querySelector(".upload"); 
         this.$createPost = document.querySelector(".create-post"); 
         this.$backArrow = document.querySelector("#back-arrow"); 
+        this.$options = document.querySelector(".options"); 
+        this.$postModal = document.querySelector(".post-modal"); 
+        this.$cancel = document.querySelector("#cancel"); 
           
         this.ui = new firebaseui.auth.AuthUI(auth); 
           
@@ -58,6 +61,8 @@ class App {
         document.body.addEventListener("click",(event) => {
             this.handleUploadClick(event); 
             this.handleUploadClose(event); 
+            this.handleOptionsOpen(event);
+            this.handleOptionsClose(event); 
         });
     };
 
@@ -78,8 +83,26 @@ class App {
             this.$createPost.style.display = "none"; 
         };  
     }; 
+
+    // FUNCTION TO HANDLE THE OPENING AND CLOSING OF THE EDIT MODAL
+    handleOptionsOpen(event) {
+        const isOptionsClickedOn = this.$options.contains(event.target);  
+        const isPostModalClickedOn = this.$postModal.contains(event.target); 
+
+        if(isOptionsClickedOn) {
+            this.$postModal.style.display = "block"; 
+        }
+    };
+
+    handleOptionsClose(event) {
+        const isCancelClickedOn = this.$cancel.contains(event.target); 
+
+         if(isCancelClickedOn) {
+            this.$postModal.style.display = "none";  
+        }; 
+    };
 };  
 
 const app = new App (); 
 
-  
+   
