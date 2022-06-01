@@ -136,8 +136,11 @@
                     </div>
 
                       <div class="upload-item">
-                        <button id="upload-image-btn">UPLOAD YOUR IMAGE</button> 
-                        <input type="text" placeholder="Write a caption">
+                        <input type="file" id="files" multiple /> <br/> <br/>
+                        <button id="send">Upload</button>  
+                        <p id="uploading"></p>
+                        <progress value="0" max="100" id="progress"></progress> 
+                        <!-- <input type="text" placeholder="Write a caption">  --> 
                       </div>
                     </div>
                   </div>  
@@ -1159,7 +1162,7 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
 
-      const auth = firebase.auth();
+      const auth = firebase.auth(); 
       var storage = firebase.storage(); 
 
       console.log(firebaseConfig)
