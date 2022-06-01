@@ -1,6 +1,6 @@
 
         this.$send = document.querySelector("#send"); 
-         
+          
 var files = [];
 document.getElementById("files").addEventListener("change", function(e) {
     files = e.target.files; 

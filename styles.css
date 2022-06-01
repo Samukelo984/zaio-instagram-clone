@@ -1,3 +1,4 @@
+/* BODY CODE */
 * {
     margin:0;
     padding:0;
@@ -17,6 +18,8 @@
     margin: 0;
     padding: 0;
 }
+
+/* NAVBAR CODE */
 
 .navbar {
     height: 54px;
@@ -134,10 +137,7 @@
     flex-direction: row;  
 } 
 
-
-
-
-
+/* MAINBODY CODE */
 main {
     height: calc(100vh - 54px);
     background-color: #fafafa;
@@ -250,6 +250,26 @@ main {
     margin-left: 10px;
     font-size: 14px;
     font-weight: 600;
+}
+
+.post-modal {
+    width: 100%;
+    height: 100%;  
+    top: 0;
+    left: 0; 
+    position: fixed;
+    z-index: 1111; 
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.post-modal-list {
+    width: 400px;
+    height: 313px;
+    margin: 20px; 
+    top: 20%;
+    left: 30%;
+    position: relative; 
+    background-color: white;
 }
 
 .footer {
